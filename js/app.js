@@ -14,10 +14,13 @@ let imgThree = document.getElementById('img-three');
 let resultsBtn = document.getElementById('show-results-btn');
 let resultList = document.getElementById('results-container');
 
+// ******** canvas Element for Chart ********
+let ctx = document.getElementById('my-chart');
+
 // ******** COMSTRUCTOR FUNCTION ********
-function Pic(name, fileExtension = 'jpg.url'){
+function Pic(name, fileExtension = 'jpg'){
   this.name = name;
-  this.image = 'img/${name}.${fileExtension}';
+  this.image = `img/${name}.${fileExtension}`;
   this.votes = 0;
   this.views = 0;
 }
@@ -25,24 +28,42 @@ function Pic(name, fileExtension = 'jpg.url'){
 
 // ******** UTILITIES *******
 
+let indexArray = [1,5];
+
 function renderPic(){
 
-  let imgOneIndex = randomIndex();
-  let imgTwoIndex = randomIndex();
-  let imgThreeIndex = randomIndex();
-
-  while(imgOneIndex === imgTwoIndex){
-    imgTwoIndex = randomIndex();
+  while(indexArray.length < 3){
+    let randoNum = randomIndex();
+    if(!indexArray.includes(randoNum)){
+      indexArray.push(randoNum);
+    }
   }
 
-  imgOne.src = picArray[imgOneIndex()].image;
-  imgOne.title = picArray[imgOneIndex()].name;
+  // let imgOneIndex = randomIndex();
+  // let imgTwoIndex = randomIndex();
+  // let imgThreeIndex = randomIndex();
+
+  // while(imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex){
+  //   imgTwoIndex = randomIndex();
+  //   imgThreeIndex = randomIndex();
+  // }
+
+  console.log(indexArray);
+
+  let imgOneIndex = indexArray.pop();
+  let imgTwoIndex = indexArray.pop();
+  let imgThreeIndex = indexArray.pop();
+
+  imgOne.src = picArray[imgOneIndex].image;
+  imgOne.title = picArray[imgOneIndex].name;
   imgOne.alt = 'this is an image of ${picArray[imgOneIndex].name}';
-  imgTwo.src = picArray[imgTwoIndex()].image;
-  imgTwo.title = picArray[imgTwoIndex()].name;
+
+  imgTwo.src = picArray[imgTwoIndex].image;
+  imgTwo.title = picArray[imgTwoIndex].name;
   imgTwo.alt = 'this is an image of ${picArray[imgTwoIndex].name}';
-  imgThree.src = picArray[imgThreeIndex()].image;
-  imgThree.title = picArray[imgThreeIndex()].name;
+
+  imgThree.src = picArray[imgThreeIndex].image;
+  imgThree.title = picArray[imgThreeIndex].name;
   imgThree.alt = 'this is an image of ${picArray[imgThreeIndex].name}';
 
 
@@ -57,6 +78,47 @@ function randomIndex(){
   return Math.floor(Math.random() * picArray.length);
 }
 
+// ***** HELPER FUNCTION TO RENDER CHART *****
+function renderChart() {
+  let picNames = [];
+  let picVotes = [];
+  let picViews = [];
+
+  for (let i = 0; i < picArray.length; i++) {
+    picNames.push(picArray[i].name);
+    picVotes.push(picArray[i].votes);
+    picViews.push(picArray[i].views);
+  }
+
+  let chartObj = {
+    type: 'bar',
+    data: {
+      label: picNames,
+      datasets: [{
+        label: '# of Votes',
+        data: picVotes,
+        borderWidth: 5,
+        backgroundColor: ['black'],
+        borderColor: ['yellow']
+      },
+      {
+        label: '# of Viewss',
+        data: picViews,
+        borederWidth: 5,
+        backgroundColor: ['green'],
+        borderColor: ['brown']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  }
+};
+
 function handleImgClick(event){
   let imgClicked = event.target.title;
   console.dir(imgClicked);
@@ -64,26 +126,28 @@ function handleImgClick(event){
   for(let i =0; i < picArray.length; i++){
     if(imgClicked === picArray[i].name){
       picArray[i].votes++;
+      votingRounds--;
+      renderPic();
     }
   }
 
-  votingRounds--;
-
-  renderPic();
 
   if(votingRounds === 0){
-    imgContainer.removeEventListener('click', handleImgClick);
+    imgContainer.removeEventListener('click', handleImgClick, resultList);
+
   }
 }
 
 function handleShowResults(){
   if(votingRounds === 0){
-    for(let i = 0; i < picArray.length; i++){
-      let picListItem = document.createElement('li');
-      picListItem.textContent = '${picArray[i].name}: View: ${picArray[i].views} & Votes: ${piArray[i].votes}';
-      resultsList.appendChild(picListItem);
-    }
-    resultsBtn.removeEevntListener('click', handleShowResults);
+    // for(let i = 0; i < picArray.length; i++){
+    //   let picListItem = document.createElement('li');
+    //   picListItem.textContent = '${picArray[i].name}: View: ${picArray[i].views} & Votes: ${piArray[i].votes}';
+    //   resultsList.appendChild(picListItem);
+    // }
+    renderChart();
+
+    resultsBtn.removeEventListener('click', handleShowResults);
   }
 }
 
@@ -102,7 +166,7 @@ let penPic = new Pic('pen');
 let petSweepPic = new Pic('pet-sweep');
 let scissorsPic = new Pic('scissors');
 let sharkPic = new Pic('shark');
-let sweepPic = new Pic('sweep', 'png.url');
+let sweepPic = new Pic('sweep', 'png');
 let tauntaunPic = new Pic('tauntaun');
 let unicornPic = new Pic('unicorn');
 let waterCanPic = new Pic('water-can');
