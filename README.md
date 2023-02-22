@@ -1,1 +1,3 @@
 # odd-duck
+
+## THIS IS MY ODD-DUCK PROJECT
