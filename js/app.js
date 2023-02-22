@@ -28,14 +28,14 @@ function Pic(name, fileExtension = 'jpg'){
 
 // ******** UTILITIES *******
 
-let indexArray = [1,5];
+let indexArray = [];
 
 function renderPic(){
 
-  while(indexArray.length < 3){
-    let randoNum = randomIndex();
-    if(!indexArray.includes(randoNum)){
-      indexArray.push(randoNum);
+  while(indexArray.length < 6){
+    let randomNum = randomIndex();
+    if(!indexArray.includes(randomNum)){
+      indexArray.push(randomNum);
     }
   }
 
@@ -50,9 +50,9 @@ function renderPic(){
 
   console.log(indexArray);
 
-  let imgOneIndex = indexArray.pop();
-  let imgTwoIndex = indexArray.pop();
-  let imgThreeIndex = indexArray.pop();
+  let imgOneIndex = indexArray.shift();
+  let imgTwoIndex = indexArray.shift();
+  let imgThreeIndex = indexArray.shift();
 
   imgOne.src = picArray[imgOneIndex].image;
   imgOne.title = picArray[imgOneIndex].name;
@@ -142,6 +142,53 @@ function handleImgClick(event){
   if(votingRounds === 0){
     imgContainer.removeEventListener('click', handleImgClick, resultList);
 
+    // ****** LOCAL STORAGE STARTS HERE ******
+    // ! STEP 1 - TURN INTO STRING
+    let stringifiedPics = JSON.stringify(picArray);
+
+    console.log('Stringifed Pics >>> ', stringifiedPics);
+
+    // ***** MOVE INTO LOCAL STORAGE ******
+    localStorage.setItem('myPics', stringifiedPics);
+
+    let retreivedPics = localStorage.getItem('myPics');
+
+    console.log('Pics from LS >>>', retreivedPics);
+
+    let parsedPics = JSON.parse(retreivedPics);
+
+    console.log('Parsed Pics >>>>', parsedPics);
+
+    if(retreivedPics){
+      picArray = parsedPics;
+    } else {
+      let bagPic = new Pic('bag');
+      let bananaPic = new Pic('banana');
+      let bathroomPic = new Pic('bathroom');
+      let bootsPic = new Pic('boots');
+      let breakfastPic = new Pic('breakfast');
+      let bubblegumPic = new Pic('bubblegum');
+      let chairPic = new Pic('chair');
+      let cthulhuPic = new Pic('cthulhu');
+      let dogPic = new Pic('dog-duck');
+      let dragonPic = new Pic('dragon');
+      let penPic = new Pic('pen');
+      let petSweepPic = new Pic('pet-sweep');
+      let scissorsPic = new Pic('scissors');
+      let sharkPic = new Pic('shark');
+      let sweepPic = new Pic('sweep', 'png');
+      let tauntaunPic = new Pic('tauntaun');
+      let unicornPic = new Pic('unicorn');
+      let waterCanPic = new Pic('water-can');
+      let wineGlassPic = new Pic('wine-glass');
+
+      picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
+
+
+
+    }
+
+
   }
 }
 
@@ -157,6 +204,56 @@ function handleShowResults(){
     resultsBtn.removeEventListener('click', handleShowResults);
   }
 }
+
+// ***** PICS FROM LOCAL STORAGE
+
+// let retreivedPics = localStorage.getItem('myPics');
+
+// console.log('Pics from LS >>>', retreivedPics);
+
+// let parsedPics = JSON.parse(retreivedPics);
+
+// console.log('Parsed Pics >>>>', parsedPics);
+
+// ******** LONG WAY OF UPDATING PARSED PICS ********
+
+// if(retreivedPics){
+//   for(let i = 0; i < parsedPics.length; i++){
+//     if(parsedPics[i].name === 'bag'){
+//       let reconstructedBag = new Pic(parsedPics[i].name, 'png');
+//       reconstructedBag.views = parsedPics[i].views;
+//       reconstructedBag.votes = parsedPics[i].votes;
+//       picArray.push(reconstructedBag);
+//     } else {
+//       let reconstructedBag = new Pic(parsedPics[i].name);
+//       reconstructedBag.views = parsedPics[i].views;
+//       reconstructedBag.votes = parsedPics[i].votes;
+//     }
+//   }
+// } else {
+//   let bagPic = new Pic('bag');
+//   let bananaPic = new Pic('banana');
+//   let bathroomPic = new Pic('bathroom');
+//   let bootsPic = new Pic('boots');
+//   let breakfastPic = new Pic('breakfast');
+//   let bubblegumPic = new Pic('bubblegum');
+//   let chairPic = new Pic('chair');
+//   let cthulhuPic = new Pic('cthulhu');
+//   let dogPic = new Pic('dog-duck');
+//   let dragonPic = new Pic('dragon');
+//   let penPic = new Pic('pen');
+//   let petSweepPic = new Pic('pet-sweep');
+//   let scissorsPic = new Pic('scissors');
+//   let sharkPic = new Pic('shark');
+//   let sweepPic = new Pic('sweep', 'png');
+//   let tauntaunPic = new Pic('tauntaun');
+//   let unicornPic = new Pic('unicorn');
+//   let waterCanPic = new Pic('water-can');
+//   let wineGlassPic = new Pic('wine-glass');
+
+// }
+
+
 
 // ******** EXECTUABLE CODE ********
 let bagPic = new Pic('bag');
@@ -179,11 +276,47 @@ let unicornPic = new Pic('unicorn');
 let waterCanPic = new Pic('water-can');
 let wineGlassPic = new Pic('wine-glass');
 
+// ******** SHORT WAY OF UPDATING PARSED PICS ********
+
+
+// if(retreivedPics){
+//   picArray = parsedPics;
+// } else {
+//   let bagPic = new Pic('bag');
+//   let bananaPic = new Pic('banana');
+//   let bathroomPic = new Pic('bathroom');
+//   let bootsPic = new Pic('boots');
+//   let breakfastPic = new Pic('breakfast');
+//   let bubblegumPic = new Pic('bubblegum');
+//   let chairPic = new Pic('chair');
+//   let cthulhuPic = new Pic('cthulhu');
+//   let dogPic = new Pic('dog-duck');
+//   let dragonPic = new Pic('dragon');
+//   let penPic = new Pic('pen');
+//   let petSweepPic = new Pic('pet-sweep');
+//   let scissorsPic = new Pic('scissors');
+//   let sharkPic = new Pic('shark');
+//   let sweepPic = new Pic('sweep', 'png');
+//   let tauntaunPic = new Pic('tauntaun');
+//   let unicornPic = new Pic('unicorn');
+//   let waterCanPic = new Pic('water-can');
+//   let wineGlassPic = new Pic('wine-glass');
+
+//   picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
+
+
+
+// }
+
 
 picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
 
+
+console.log('Normal Original Pic Array', picArray);
 renderPic();
 
+
+renderPic();
 
 imgContainer.addEventListener('click', handleImgClick);
 resultsBtn.addEventListener('click', handleShowResults);
