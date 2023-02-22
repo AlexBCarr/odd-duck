@@ -118,7 +118,9 @@ function renderChart(){
     }
   };
 
-  new Chart(ctx, chartObj);
+// ******* CHART CONSTRUCTOR *******
+
+  new Chart(ctx, chartObj); //eslint-disable-line
 
 }
 
