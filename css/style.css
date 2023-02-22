@@ -19,7 +19,7 @@ h1 {
 
 #show-results-btn {
   width: 90%;
-  height: 200px;
+  height: 80px;
   text-align: center;
   border-width: 20px;
   border-color: yellow;
@@ -35,7 +35,13 @@ h1 {
   justify-content: space-evenly;
 }
 
-#
+#result-container {
+  width: 90%;
+  height: 500px;
+  align-items: center;
+  border-width: 20px;
+  border-color: black; 
+}
 /* #img-one {
   Width: 
 } */

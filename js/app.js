@@ -79,7 +79,7 @@ function randomIndex(){
 }
 
 // ***** HELPER FUNCTION TO RENDER CHART *****
-function renderChart() {
+function renderChart(){
   let picNames = [];
   let picVotes = [];
   let picViews = [];
@@ -93,20 +93,20 @@ function renderChart() {
   let chartObj = {
     type: 'bar',
     data: {
-      label: picNames,
+      labels: picNames,
       datasets: [{
-        label: '# of Votes',
+        label: '# Of Votes',
         data: picVotes,
-        borderWidth: 5,
+        borderWidth: 2,
         backgroundColor: ['black'],
         borderColor: ['yellow']
       },
       {
-        label: '# of Viewss',
+        label: '# Of Views',
         data: picViews,
-        borederWidth: 5,
-        backgroundColor: ['green'],
-        borderColor: ['brown']
+        borederWidth: 2,
+        backgroundColor: ['gold'],
+        borderColor: ['black']
       }]
     },
     options: {
@@ -116,8 +116,13 @@ function renderChart() {
         }
       }
     }
-  }
-};
+  };
+
+  new Chart(ctx, chartObj);
+
+}
+
+// ******** EVENT HANDLERS ********
 
 function handleImgClick(event){
   let imgClicked = event.target.title;
