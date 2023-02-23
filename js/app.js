@@ -104,9 +104,9 @@ function renderChart(){
       {
         label: '# Of Views',
         data: picViews,
-        borederWidth: 2,
-        backgroundColor: ['gold'],
-        borderColor: ['black']
+        borderWidth: 2,
+        backgroundColor: ['grey'],
+        borderColor: ['yellow']
       }]
     },
     options: {
@@ -151,42 +151,42 @@ function handleImgClick(event){
     // ***** MOVE INTO LOCAL STORAGE ******
     localStorage.setItem('myPics', stringifiedPics);
 
-    let retreivedPics = localStorage.getItem('myPics');
+    // let retreivedPics = localStorage.getItem('myPics');
 
-    console.log('Pics from LS >>>', retreivedPics);
+    // console.log('Pics from LS >>>', retreivedPics);
 
-    let parsedPics = JSON.parse(retreivedPics);
+    // let parsedPics = JSON.parse(retreivedPics);
 
-    console.log('Parsed Pics >>>>', parsedPics);
+    // console.log('Parsed Pics >>>>', parsedPics);
 
-    if(retreivedPics){
-      picArray = parsedPics;
-    } else {
-      let bagPic = new Pic('bag');
-      let bananaPic = new Pic('banana');
-      let bathroomPic = new Pic('bathroom');
-      let bootsPic = new Pic('boots');
-      let breakfastPic = new Pic('breakfast');
-      let bubblegumPic = new Pic('bubblegum');
-      let chairPic = new Pic('chair');
-      let cthulhuPic = new Pic('cthulhu');
-      let dogPic = new Pic('dog-duck');
-      let dragonPic = new Pic('dragon');
-      let penPic = new Pic('pen');
-      let petSweepPic = new Pic('pet-sweep');
-      let scissorsPic = new Pic('scissors');
-      let sharkPic = new Pic('shark');
-      let sweepPic = new Pic('sweep', 'png');
-      let tauntaunPic = new Pic('tauntaun');
-      let unicornPic = new Pic('unicorn');
-      let waterCanPic = new Pic('water-can');
-      let wineGlassPic = new Pic('wine-glass');
+    // if(retreivedPics){
+    //   picArray = parsedPics;
+    // } else {
+    //   let bagPic = new Pic('bag');
+    //   let bananaPic = new Pic('banana');
+    //   let bathroomPic = new Pic('bathroom');
+    //   let bootsPic = new Pic('boots');
+    //   let breakfastPic = new Pic('breakfast');
+    //   let bubblegumPic = new Pic('bubblegum');
+    //   let chairPic = new Pic('chair');
+    //   let cthulhuPic = new Pic('cthulhu');
+    //   let dogPic = new Pic('dog-duck');
+    //   let dragonPic = new Pic('dragon');
+    //   let penPic = new Pic('pen');
+    //   let petSweepPic = new Pic('pet-sweep');
+    //   let scissorsPic = new Pic('scissors');
+    //   let sharkPic = new Pic('shark');
+    //   let sweepPic = new Pic('sweep', 'png');
+    //   let tauntaunPic = new Pic('tauntaun');
+    //   let unicornPic = new Pic('unicorn');
+    //   let waterCanPic = new Pic('water-can');
+    //   let wineGlassPic = new Pic('wine-glass');
 
-      picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
+    //   picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
 
 
 
-    }
+    // }
 
 
   }
@@ -207,13 +207,13 @@ function handleShowResults(){
 
 // ***** PICS FROM LOCAL STORAGE
 
-// let retreivedPics = localStorage.getItem('myPics');
+let retreivedPics = localStorage.getItem('myPics');
 
-// console.log('Pics from LS >>>', retreivedPics);
+console.log('Pics from LS >>>', retreivedPics);
 
-// let parsedPics = JSON.parse(retreivedPics);
+let parsedPics = JSON.parse(retreivedPics);
 
-// console.log('Parsed Pics >>>>', parsedPics);
+console.log('Parsed Pics >>>>', parsedPics);
 
 // ******** LONG WAY OF UPDATING PARSED PICS ********
 
@@ -256,60 +256,60 @@ function handleShowResults(){
 
 
 // ******** EXECTUABLE CODE ********
-let bagPic = new Pic('bag');
-let bananaPic = new Pic('banana');
-let bathroomPic = new Pic('bathroom');
-let bootsPic = new Pic('boots');
-let breakfastPic = new Pic('breakfast');
-let bubblegumPic = new Pic('bubblegum');
-let chairPic = new Pic('chair');
-let cthulhuPic = new Pic('cthulhu');
-let dogPic = new Pic('dog-duck');
-let dragonPic = new Pic('dragon');
-let penPic = new Pic('pen');
-let petSweepPic = new Pic('pet-sweep');
-let scissorsPic = new Pic('scissors');
-let sharkPic = new Pic('shark');
-let sweepPic = new Pic('sweep', 'png');
-let tauntaunPic = new Pic('tauntaun');
-let unicornPic = new Pic('unicorn');
-let waterCanPic = new Pic('water-can');
-let wineGlassPic = new Pic('wine-glass');
+// let bagPic = new Pic('bag');
+// let bananaPic = new Pic('banana');
+// let bathroomPic = new Pic('bathroom');
+// let bootsPic = new Pic('boots');
+// let breakfastPic = new Pic('breakfast');
+// let bubblegumPic = new Pic('bubblegum');
+// let chairPic = new Pic('chair');
+// let cthulhuPic = new Pic('cthulhu');
+// let dogPic = new Pic('dog-duck');
+// let dragonPic = new Pic('dragon');
+// let penPic = new Pic('pen');
+// let petSweepPic = new Pic('pet-sweep');
+// let scissorsPic = new Pic('scissors');
+// let sharkPic = new Pic('shark');
+// let sweepPic = new Pic('sweep', 'png');
+// let tauntaunPic = new Pic('tauntaun');
+// let unicornPic = new Pic('unicorn');
+// let waterCanPic = new Pic('water-can');
+// let wineGlassPic = new Pic('wine-glass');
 
 // ******** SHORT WAY OF UPDATING PARSED PICS ********
 
 
-// if(retreivedPics){
-//   picArray = parsedPics;
-// } else {
-//   let bagPic = new Pic('bag');
-//   let bananaPic = new Pic('banana');
-//   let bathroomPic = new Pic('bathroom');
-//   let bootsPic = new Pic('boots');
-//   let breakfastPic = new Pic('breakfast');
-//   let bubblegumPic = new Pic('bubblegum');
-//   let chairPic = new Pic('chair');
-//   let cthulhuPic = new Pic('cthulhu');
-//   let dogPic = new Pic('dog-duck');
-//   let dragonPic = new Pic('dragon');
-//   let penPic = new Pic('pen');
-//   let petSweepPic = new Pic('pet-sweep');
-//   let scissorsPic = new Pic('scissors');
-//   let sharkPic = new Pic('shark');
-//   let sweepPic = new Pic('sweep', 'png');
-//   let tauntaunPic = new Pic('tauntaun');
-//   let unicornPic = new Pic('unicorn');
-//   let waterCanPic = new Pic('water-can');
-//   let wineGlassPic = new Pic('wine-glass');
+if(retreivedPics){
+  picArray = parsedPics;
+} else {
+  let bagPic = new Pic('bag');
+  let bananaPic = new Pic('banana');
+  let bathroomPic = new Pic('bathroom');
+  let bootsPic = new Pic('boots');
+  let breakfastPic = new Pic('breakfast');
+  let bubblegumPic = new Pic('bubblegum');
+  let chairPic = new Pic('chair');
+  let cthulhuPic = new Pic('cthulhu');
+  let dogPic = new Pic('dog-duck');
+  let dragonPic = new Pic('dragon');
+  let penPic = new Pic('pen');
+  let petSweepPic = new Pic('pet-sweep');
+  let scissorsPic = new Pic('scissors');
+  let sharkPic = new Pic('shark');
+  let sweepPic = new Pic('sweep', 'png');
+  let tauntaunPic = new Pic('tauntaun');
+  let unicornPic = new Pic('unicorn');
+  let waterCanPic = new Pic('water-can');
+  let wineGlassPic = new Pic('wine-glass');
 
-//   picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
-
-
-
-// }
+  picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
 
 
-picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
+
+}
+
+
+// picArray.push(bagPic,bananaPic,bathroomPic,bootsPic,breakfastPic,bubblegumPic,chairPic,cthulhuPic,dogPic,dragonPic,penPic,petSweepPic,scissorsPic,sharkPic,sweepPic,tauntaunPic,unicornPic,waterCanPic,wineGlassPic);
 
 
 console.log('Normal Original Pic Array', picArray);

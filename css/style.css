@@ -1,47 +1,91 @@
 body {
-  background-color: rgb(46, 125, 204);
+  background-color: rgb(40, 40, 40);
 
 }
+
+
 header {
-  width: 90%;
-  height: 100px;
-  border-color: white;
-  border-width: 15px;
+  width: 100%; 
+  height: 100px; 
+  display: flex;
+  background-color: black;
+  
+  
 }
 
 h1 {
-  
+  width: 100%;
+  height: 40px; 
+  color: yellow;
   text-align: center;
+  font-size: 80%;
+  background-color: rgb(40, 40, 40);
   
- 
- 
+  
+  
+  
+  
+  
+}
+
+#button {
+  display: flex;
+  justify-content: center;
+  
 }
 
 #show-results-btn {
-  width: 90%;
+  width: 10%;
   height: 80px;
   text-align: center;
-  border-width: 20px;
-  border-color: yellow;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  color: yellow;
+  font-size: 30px;
+  padding-top: 20px;
+  
 }
 
 #img-container {
   width: 100%;
   height: 300px;
   border: 50px;
+  background-color: yellow;
   border-color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding-bottom: 50px;
 }
 
 #result-container {
-  width: 90%;
+  width: 97%;
   height: 500px;
-  align-items: center;
-  border-width: 20px;
-  border-color: black; 
+  display: flex;
+  justify-content: center;
+  
 }
-/* #img-one {
-  Width: 
-} */
+#img-one {
+  height: 200px;
+  margin: 50px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: black;
+  
+  
+}
+#img-two {
+  height: 200px;
+  margin: 50px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: black;
+}
+#img-three {
+  height: 200px;
+  margin: 50px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: black;
+}
