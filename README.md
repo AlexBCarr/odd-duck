@@ -1,3 +1,3 @@
 # odd-duck
 
-## LIGHTHOUSE SCORE 70 
+## LIGHTHOUSE SCORE 100 
